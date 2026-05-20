@@ -3,29 +3,20 @@
 #include "../../common/hal.h"
 
 
-// ==============================
 // DEFINIÇÃO DOS PINOS
-// ==============================
 
 // Sensores
-
 #define PIN_S11 2
 #define PIN_S12 3
-
 #define PIN_S21 4
 #define PIN_S22 5
-
 #define PIN_S31 6
 #define PIN_S32 7
 
-
 // Atuadores
-
 #define PIN_V1 8
 #define PIN_V2 9
-
 #define PIN_B1 10
-
 #define PIN_R1 11
 
 
@@ -34,9 +25,7 @@
 #define PIN_ST1 A0
 
 
-// ==============================
 // INICIALIZAÇÃO
-// ==============================
 
 void init_hal()
 {
@@ -73,9 +62,7 @@ void init_hal()
 }
 
 
-// ==============================
 // LEITURA DOS SENSORES
-// ==============================
 
 bool s11()
 {
@@ -108,25 +95,23 @@ bool s32()
 }
 
 
-// ==============================
 // CONTROLE DOS ATUADORES
-// ==============================
 
-void v1(bool estado)
+void v1(bool STATE)
 {
-    if (estado)
+    if (STATE)
     {
         digitalWrite(PIN_V1, HIGH);
     }
     else
-    {
+{
         digitalWrite(PIN_V1, LOW);
     }
 }
 
-void v2(bool estado)
+void v2(bool STATE)
 {
-    if (estado)
+    if (STATE)
     {
         digitalWrite(PIN_V2, HIGH);
     }
@@ -136,9 +121,9 @@ void v2(bool estado)
     }
 }
 
-void b1(bool estado)
+void b1(bool STATE)
 {
-    if (estado)
+    if (STATE)
     {
         digitalWrite(PIN_B1, HIGH);
     }
@@ -148,9 +133,9 @@ void b1(bool estado)
     }
 }
 
-void r1(bool estado)
+void r1(bool STATE)
 {
-    if (estado)
+    if (STATE)
     {
         digitalWrite(PIN_R1, HIGH);
     }
@@ -161,9 +146,8 @@ void r1(bool estado)
 }
 
 
-// ==============================
+
 // TEMPERATURA
-// ==============================
 
 float st1()
 {
@@ -176,9 +160,7 @@ float st1()
 }
 
 
-// ==============================
 // TEMPO DO SISTEMA
-// ==============================
 
 uint32_t now()
 {
