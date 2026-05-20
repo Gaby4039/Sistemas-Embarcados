@@ -1,31 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
  * template_arduino_se.cpp
  *
@@ -35,11 +7,14 @@
 
 // Including the main Arduino framework header is still necessary.
 #include <Arduino.h>
+#include "../../common/sm.h"
 #include "../../common/hal.h"
+#include "../../common/sm.h"
 #include "../../common/sm1.h"
 #include "../../common/sm2.h"
 #include "../../common/sm3.h"
 #include "../../common/sm4.h"
+
 
 /**
  * @brief The program's main and single entry point.
@@ -50,10 +25,16 @@ int main(void)
     // It configures the hardware timers required for time-based functions like delay() and millis().
     init();
 	init_hal();
-	INIT(sm1.h);
-	INIT(sm2.h);
-	INIT(sm3.h);
-	INIT(sm4.h);	
+	
+	StateMachine sm1;
+    INIT(sm1, sm1_init);
+    StateMachine sm2;
+    INIT(sm2, sm2_init);
+    StateMachine sm3;
+    INIT(sm3, sm3_init);
+    StateMachine sm4;
+    INIT(sm4, sm4_init);
+	
 
     // Set the built-in LED pin (LED_BUILTIN) as an output.
     pinMode(LED_BUILTIN, OUTPUT);
@@ -69,6 +50,12 @@ int main(void)
         // Turn the LED off
         digitalWrite(LED_BUILTIN, LOW);
         delay(100);
+		
+		EXEC(sm1);
+        EXEC(sm2);
+        EXEC(sm3);
+        EXEC(sm4);
+		
     }
 
     return 0; // This line is never reached.
