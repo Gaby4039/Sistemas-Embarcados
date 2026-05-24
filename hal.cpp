@@ -3,20 +3,29 @@
 #include "../../common/hal.h"
 
 
+// ==============================
 // DEFINIÇÃO DOS PINOS
+// ==============================
 
 // Sensores
+
 #define PIN_S11 2
 #define PIN_S12 3
+
 #define PIN_S21 4
 #define PIN_S22 5
+
 #define PIN_S31 6
 #define PIN_S32 7
 
+
 // Atuadores
+
 #define PIN_V1 8
 #define PIN_V2 9
+
 #define PIN_B1 10
+
 #define PIN_R1 11
 
 
@@ -25,7 +34,8 @@
 #define PIN_ST1 A0
 
 
-// INICIALIZAÇÃO
+
+// INICIALIZAÇÃO DA HAL
 
 void init_hal()
 {
@@ -97,21 +107,22 @@ bool s32()
 
 // CONTROLE DOS ATUADORES
 
-void v1(bool STATE)
+void set_v1(bool state)
 {
-    if (STATE)
+    if (state)
     {
         digitalWrite(PIN_V1, HIGH);
     }
     else
-{
+    {
         digitalWrite(PIN_V1, LOW);
     }
 }
 
-void v2(bool STATE)
+
+void set_v2(bool state)
 {
-    if (STATE)
+    if (state)
     {
         digitalWrite(PIN_V2, HIGH);
     }
@@ -121,9 +132,10 @@ void v2(bool STATE)
     }
 }
 
-void b1(bool STATE)
+
+void set_b1(bool state)
 {
-    if (STATE)
+    if (state)
     {
         digitalWrite(PIN_B1, HIGH);
     }
@@ -133,9 +145,10 @@ void b1(bool STATE)
     }
 }
 
-void r1(bool STATE)
+
+void set_r1(bool state)
 {
-    if (STATE)
+    if (state)
     {
         digitalWrite(PIN_R1, HIGH);
     }
@@ -146,10 +159,9 @@ void r1(bool STATE)
 }
 
 
-
 // TEMPERATURA
 
-float st1()
+float get_st1()
 {
     int valorLido = analogRead(PIN_ST1);
 
@@ -160,9 +172,19 @@ float st1()
 }
 
 
-// TEMPO DO SISTEMA
+// TEMPO 
 
 uint32_t now()
 {
     return millis();
 }
+
+// ESTADOS DE ERRO
+
+void set_sm1_error(bool state) {}
+
+void set_sm2_error(bool state) {}
+
+void set_sm3_error(bool state) {}
+
+void set_sm4_error(bool state) {}
